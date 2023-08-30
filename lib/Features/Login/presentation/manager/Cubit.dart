@@ -20,25 +20,31 @@ class LogCubit extends Cubit<LogStates>
   var codeCont=TextEditingController();
   var Email=TextEditingController();
   var NewPass=TextEditingController();
+
+
+  String error="";
+
   Future<void> SignIn() async {
     emit(LogLoadingStates());
     RepoDlog repoDlog=RepoDataLog(logDataSource);
     UseCaseLog useCaseLog = UseCaseLog(repoDlog);
     var res=await useCaseLog.call(EmailCont.text, passCont.text);
 
+
     res.fold((l) => emit(LogErrorStates(l.msg)), (r) {
       emit(LogSuccessStates(r));
+      print(r.message);
     });
 
 
   }
 
-String error="";
  void ForgetP()   async {
     emit(LogLoadingStates());
     RepoDlog repoDlog=RepoDataLog(logDataSource);
     UseCaseLog useCaseLog = UseCaseLog(repoDlog);
     var res=await useCaseLog.FP(emailF.text);
+print(res.toString());
 
     res.fold((l) {
       emit(ForGetPassErrorStates(l.msg));

@@ -156,7 +156,7 @@ List<Data>Cate=[];
 
   List<DwatchList> ListWatchList=[];
   getToWatchList()async {
-
+    //emit(HomeLoading());
     HomeRepoDomain repoDomain=HomeRepoData(homeDto);
     ProductUseCase productUseCase =ProductUseCase(repoDomain);
     var res= await productUseCase.getW();
@@ -167,7 +167,7 @@ List<Data>Cate=[];
       print(r.count);
       ListWatchList=r.data!;
       emit(GETWatchListSuccess(r));
-      emit(HomeInit());
+     // emit(HomeInit());
 
 
 

@@ -21,6 +21,11 @@ class HeartListTab extends StatelessWidget {
         );
         },);
         }
+        else if(state is AddtoWatchListSuccess)
+        {
+
+
+        }
         else if(state is GETWatchListSuccess)
         {
         Navigator.pop(context);

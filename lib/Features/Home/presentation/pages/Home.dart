@@ -94,6 +94,11 @@ class _HomeState extends State<Home> {
               );
             },);
           }
+          else if(state is AddtoWatchListSuccess)
+          {
+            Navigator.pop(context);
+
+          }
           else if(state is RemovetoWatchListSuccess)
           {
             Navigator.pop(context);

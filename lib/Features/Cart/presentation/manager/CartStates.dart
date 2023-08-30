@@ -9,7 +9,7 @@ class CartStatesLoading extends CartStates{}
 class CartStatesSuccess extends CartStates{
   ModelCart modelCart;
 
-  CartStatesSuccess(this.modelCart);
+  CartStatesSuccess( this.modelCart);
 }
 class CartStatesError extends CartStates{
   String msg;

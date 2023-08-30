@@ -26,7 +26,12 @@ class RemoteDataLog implements LogDataSource
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
 
@@ -42,8 +47,13 @@ class RemoteDataLog implements LogDataSource
     }
     catch(e)
     {
+      if(e is DioException) {
+      return left(ServerError.fromDio(e));
+    }
+    else{
       return left(ServerError(e.toString()));
     }
+  }
   }
 
   @override
@@ -58,7 +68,12 @@ class RemoteDataLog implements LogDataSource
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
 
@@ -75,7 +90,12 @@ class RemoteDataLog implements LogDataSource
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
 }

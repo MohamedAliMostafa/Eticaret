@@ -38,7 +38,12 @@ class RemoteDto implements HomeDto
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
 
   }
@@ -58,7 +63,12 @@ class RemoteDto implements HomeDto
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
   //end Brands
@@ -77,7 +87,12 @@ class RemoteDto implements HomeDto
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
 
@@ -99,7 +114,12 @@ class RemoteDto implements HomeDto
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
 // end addCart
@@ -122,7 +142,12 @@ class RemoteDto implements HomeDto
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
 
@@ -139,7 +164,12 @@ class RemoteDto implements HomeDto
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
 
@@ -156,7 +186,12 @@ class RemoteDto implements HomeDto
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
 

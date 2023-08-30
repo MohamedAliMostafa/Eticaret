@@ -35,6 +35,7 @@ class _SignInCalState extends State<SignInCal> {
           }
           else if(state is LogErrorStates)
           {
+
             showDialog(context: context, builder: (context) {
               return  AlertDialog(title: const Text("Error"),
                 content: Text(state.msg),

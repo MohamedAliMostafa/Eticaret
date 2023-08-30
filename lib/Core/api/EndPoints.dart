@@ -10,9 +10,9 @@ const String WatchListEndPoint="/api/v1/wishlist";
 const String ForgetPasEndPoint="/api/v1/auth/forgotPasswords";
 const String verifyEndPoint="/api/v1/auth/verifyResetCode";
 const String resetPassEndPoint="/api/v1/auth/resetPassword";
-const String authReq="/auth/tokens";
-const String OrderIdEndPoint="/ecommerce/orders";
-const String keyReqEndpoint="/acceptance/payment_keys";
+const String authReq="/api/auth/tokens";
+const String OrderIdEndPoint="/api/ecommerce/orders";
+const String keyReqEndpoint="/api/acceptance/payment_keys";
 
 
 

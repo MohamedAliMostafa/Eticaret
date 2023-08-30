@@ -2,5 +2,5 @@ const String NameProject="Eticaret";
 const String api_keyPayment="ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2T0RZek1qY3lMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuOUFXQ0FFNjNzWnJpak56ZW50SzdweWptRHZiUS1abFlBVnRUUk5kaGdDbVZQbnNpMlpQM2VIM1hfN1VMQjlpaU9XNnU2bVEzTTFVbVV4cFotaFVPQUE=";
  String authToken="";
  String Order_Id="";
- dynamic integrationId=4047347;
+ var integrationId=4047347;
  String keyRequ="";

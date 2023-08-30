@@ -26,7 +26,12 @@ class RemoteDTO implements DataSource
     }
     catch(e)
     {
-    return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
 
   }

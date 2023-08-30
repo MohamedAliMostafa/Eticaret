@@ -1,3 +1,4 @@
+
 import 'package:eticaret/Features/Cart/data/data_sources/DtoCart.dart';
 import 'package:eticaret/Features/Cart/domain/repositories/RepoDomainCart.dart';
 import 'package:eticaret/Features/Cart/domain/use_cases/CartUserCase.dart';
@@ -45,6 +46,7 @@ class CartCubit extends Cubit<CartStates> {
     RepoDomCart repoDomain=RepoDataCart(cartDto);
     CartUsecase cateUseCase =CartUsecase(repoDomain);
     var res= await cateUseCase.AuthR();
+    print(res.toString());
     res.fold((l) {
       emit(AuthReqStatesError(l.msg));
     }, (r) {
@@ -57,6 +59,7 @@ class CartCubit extends Cubit<CartStates> {
     RepoDomCart repoDomain=RepoDataCart(cartDto);
     CartUsecase cateUseCase =CartUsecase(repoDomain);
     var res= await cateUseCase.ordID();
+    print(res.toString());
     res.fold((l) {
 print(l.msg);
       emit(OrderIDStatesError(l.msg));

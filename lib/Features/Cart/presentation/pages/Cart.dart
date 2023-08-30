@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:eticaret/Features/Cart/data/data_sources/DtoCart.dart';
 import 'package:eticaret/Features/Cart/presentation/manager/CartCubit.dart';
 import 'package:eticaret/Features/Cart/presentation/manager/CartStates.dart';
@@ -11,7 +12,7 @@ class  CartScreen extends StatelessWidget {
 static const String RouteName="Cart";
   @override
   Widget build(BuildContext context) {
-    return  BlocProvider(create: (context) => CartCubit(RemoteDtoCart())..getCarts(),
+    return  BlocProvider(create: (context) => CartCubit(RemoteDtoCart())..getCarts()..getAuthReq(),
     child: BlocConsumer<CartCubit,CartStates>(
       listener: (context, state) {
         if(state is CartStatesLoading)
@@ -29,6 +30,14 @@ static const String RouteName="Cart";
             }
        else if(state is CartStatesSuccess)
         {
+        }
+       else if( state is AuthReqStatesSuccess)
+         {
+           CartCubit.get(context).getOrderID();
+         }
+        else if( state is OrderIDStatesSuccess)
+        {
+        CartCubit.get(context).getCarts();
         }
 
 
@@ -80,7 +89,18 @@ static const String RouteName="Cart";
                                 )
                               ),
                               onPressed: (){
-                                CartCubit.get(context).getKeyReq();
+                                AwesomeDialog(
+
+                                  context: context,
+                                  dialogType: DialogType.success,
+                                  animType: AnimType.bottomSlide,
+
+                                  body: Container(
+                                      margin: REdgeInsets.only(bottom: 10),
+                                      child: Text("service code : 5149876150130",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)),
+                                  title: 'Dialog Title',
+
+                                ).show();
                               }, child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
@@ -92,7 +112,7 @@ static const String RouteName="Cart";
                         SizedBox(width: 20.w,),
                       ],
                     ),
-                  )
+                  ),
                 ],
               )
         );

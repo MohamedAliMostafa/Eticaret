@@ -132,15 +132,10 @@ class RemoteDtoCart implements CartDto
           "currency": "EGP",
           "integration_id": integrationId
         }
-      },options: Options(
-        contentType: "application/json",
-        headers: {
-          "Content-type":"application/json",
-          'Accept':"application/json",
-          "charset":"utf8"
-           // ("Content-Type", "application/json; charset=utf8")
-        }
-      ));
+      },
+        options: Options(headers:  {'Content-Type':'application/json'})
+      );
+
       KeyReq keyReq=KeyReq.fromJson(resp.data);
       keyRequ=keyReq.token!;
       print(keyRequ);
@@ -148,7 +143,12 @@ class RemoteDtoCart implements CartDto
     }
     catch(e)
     {
-      return left(ServerError(e.toString()));
+      if(e is DioException) {
+        return left(ServerError.fromDio(e));
+      }
+      else{
+        return left(ServerError(e.toString()));
+      }
     }
   }
 
