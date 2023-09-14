@@ -22,6 +22,26 @@ class ProductTab extends StatelessWidget {
           {
             Navigator.pop(context);
           }
+        else if(state is AddtoCartError)
+        {
+          showDialog(context: context, builder: (context) {
+            return  AlertDialog(title: const Text("Error"),
+              content: Text(state.msg),
+            );
+          },);
+        }
+        else if(state is AddtoWatchListError)
+        {
+          showDialog(context: context, builder: (context) {
+            return  AlertDialog(title: const Text("Error"),
+              content: Text(state.msg),
+            );
+          },);
+        }
+        else if(state is GETWatchListSuccess)
+        {
+          Navigator.pop(context);
+        }
 
       },
       builder: (context, state) {

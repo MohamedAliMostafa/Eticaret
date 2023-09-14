@@ -46,9 +46,11 @@ int count=1;
     var res= await prodUseCase.call(id);
     res.fold((l) =>emit(DetailsCateError(l.msg)), (r) {
       OneProduct=r.data!;
+      totalPrice=OneProduct!.price??0;
       emit( DetailsCateSuccess(r));
 
     });
   }
+
 
 }

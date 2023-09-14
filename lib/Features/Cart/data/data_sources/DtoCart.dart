@@ -143,12 +143,7 @@ class RemoteDtoCart implements CartDto
     }
     catch(e)
     {
-      if(e is DioException) {
-        return left(ServerError.fromDio(e));
-      }
-      else{
-        return left(ServerError(e.toString()));
-      }
+      return left(ServerError(e.toString()));
     }
   }
 

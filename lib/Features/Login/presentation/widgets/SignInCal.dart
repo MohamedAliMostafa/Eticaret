@@ -37,7 +37,7 @@ class _SignInCalState extends State<SignInCal> {
           {
 
             showDialog(context: context, builder: (context) {
-              return  AlertDialog(title: const Text("Error"),
+              return  AlertDialog(
                 content: Text(state.msg),
               );
             },);

@@ -1,7 +1,5 @@
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:eticaret/Core/utilis/CachHelper.dart';
-import 'package:eticaret/Core/utilis/Strings.dart';
 import 'package:eticaret/Features/Home/data/data_sources/HomeDto.dart';
 import 'package:eticaret/Features/Home/presentation/manager/HomeCubit.dart';
 import 'package:eticaret/Features/Home/presentation/manager/HomeStates.dart';
@@ -20,7 +18,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create:(context) => HomeCubit(RemoteDto())..getCate()..getBrands()..getProduct()..getToWatchList(),
+          create:(context) => HomeCubit(RemoteDto())..getCate()..getBrands()..getProduct()..getToWatchList(),
       child: BlocConsumer<HomeCubit,HomeStates>(
         listener: (context, state) {
           if(state is HomeLoading)
@@ -31,6 +29,14 @@ class _HomeState extends State<Home> {
                 return const Center(child: CircularProgressIndicator());
               },
             );
+          }
+          else if(state is GetWatchListError)
+          {
+            showDialog(context: context, builder: (context) {
+              return  AlertDialog(title: const Text("Error"),
+                content: Text(state.msg),
+              );
+            },);
           }
           else if(state is HomeCateError)
           {
@@ -56,69 +62,6 @@ class _HomeState extends State<Home> {
               );
             },);
           }
-          else if(state is HomeCateSuccess)
-            {
-
-
-            }
-          else if(state is AddtoCartError)
-          {
-            showDialog(context: context, builder: (context) {
-              return  AlertDialog(title: const Text("Error"),
-                content: Text(state.msg),
-              );
-            },);
-          }
-          else if(state is AddtoCartSuccess)
-          {
-
-          }
-          else if(state is AddtoWatchListError)
-          {
-            showDialog(context: context, builder: (context) {
-              return  AlertDialog(title: const Text("Error"),
-                content: Text(state.msg),
-              );
-            },);
-          }
-          else if(state is AddtoWatchListSuccess)
-          {
-           // Navigator.pop(context);
-
-          }
-          else if(state is RemoveoWatchListError)
-          {
-            showDialog(context: context, builder: (context) {
-              return  AlertDialog(title: const Text("Error"),
-                content: Text(state.msg),
-              );
-            },);
-          }
-          else if(state is AddtoWatchListSuccess)
-          {
-            Navigator.pop(context);
-
-          }
-          else if(state is RemovetoWatchListSuccess)
-          {
-            Navigator.pop(context);
-
-          }
-          else if(state is GetWatchListError)
-          {
-            showDialog(context: context, builder: (context) {
-              return  AlertDialog(title: const Text("Error"),
-                content: Text(state.msg),
-              );
-            },);
-          }
-          else if(state is GETWatchListSuccess)
-          {
-
-
-          }
-
-
 
         },
         builder: (context, state) {

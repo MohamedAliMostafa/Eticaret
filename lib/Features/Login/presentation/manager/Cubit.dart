@@ -30,7 +30,6 @@ class LogCubit extends Cubit<LogStates>
     UseCaseLog useCaseLog = UseCaseLog(repoDlog);
     var res=await useCaseLog.call(EmailCont.text, passCont.text);
 
-
     res.fold((l) => emit(LogErrorStates(l.msg)), (r) {
       emit(LogSuccessStates(r));
       print(r.message);

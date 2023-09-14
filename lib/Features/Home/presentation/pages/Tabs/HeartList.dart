@@ -26,6 +26,14 @@ class HeartListTab extends StatelessWidget {
 
 
         }
+        else if(state is RemoveoWatchListError)
+        {
+          showDialog(context: context, builder: (context) {
+            return  AlertDialog(title: const Text("Error"),
+              content: Text(state.msg),
+            );
+          },);
+        }
         else if(state is GETWatchListSuccess)
         {
         Navigator.pop(context);

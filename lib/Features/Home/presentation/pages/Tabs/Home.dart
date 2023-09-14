@@ -16,6 +16,22 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit,HomeStates>(
       listener: (context, state) {
+         if(state is HomeCateError)
+        {
+        showDialog(context: context, builder: (context) {
+        return  AlertDialog(title: const Text("Error"),
+        content: Text(state.msg),
+        );
+        },);
+        }
+         else if(state is HomeBrandsError)
+         {
+           showDialog(context: context, builder: (context) {
+             return  AlertDialog(title: const Text("Error"),
+               content: Text(state.msg),
+             );
+           },);
+         }
 
       },
       builder: (context, state) {

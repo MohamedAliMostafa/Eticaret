@@ -75,7 +75,6 @@ List<Data>Cate=[];
   List<Dbrands>Brand=[];
   getBrands()async {
     emit(HomeLoading());
-
     HomeRepoDomain repoDomain=HomeRepoData(homeDto);
     BrandsUseCase brandsUseCase =BrandsUseCase(repoDomain);
     var res= await brandsUseCase.Call();

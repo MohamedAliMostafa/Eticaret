@@ -12,33 +12,54 @@ class  CartScreen extends StatelessWidget {
 static const String RouteName="Cart";
   @override
   Widget build(BuildContext context) {
-    return  BlocProvider(create: (context) => CartCubit(RemoteDtoCart())..getCarts()..getAuthReq(),
+    return  BlocProvider(create: (context) => CartCubit(RemoteDtoCart())..getCarts(),
     child: BlocConsumer<CartCubit,CartStates>(
       listener: (context, state) {
         if(state is CartStatesLoading)
           {
             showDialog<void>(
-              barrierColor: Colors.white,
               context: context,
               builder: (BuildContext dialogContext) {
-                return const Center(
-                    child: CircularProgressIndicator(backgroundColor: Colors.white,color: Colors.black,));
+                return const Center(child: CircularProgressIndicator());
               },
-
             );
-            Navigator.pop(context);
             }
-       else if(state is CartStatesSuccess)
+       else if(state is AuthReqStatesSuccess)
         {
+       // CartCubit.get(context).getOrderID();
         }
-       else if( state is AuthReqStatesSuccess)
-         {
-           CartCubit.get(context).getOrderID();
-         }
-        else if( state is OrderIDStatesSuccess)
+        else if(state is OrderIDStatesSuccess)
         {
-        CartCubit.get(context).getCarts();
+        //  CartCubit.get(context).getKeyReq();
         }
+        else if(state is AuthReqStatesError)
+        {
+
+          showDialog(context: context, builder: (context) {
+            return  AlertDialog(title: const Text("Error"),
+              content: Text(state.msg),
+            );
+          },);
+        }
+        else if(state is OrderIDStatesError)
+        {
+
+          showDialog(context: context, builder: (context) {
+            return  AlertDialog(title: const Text("Error"),
+              content: Text(state.msg),
+            );
+          },);
+        }
+        else if(state is KeyReqStatesError)
+        {
+
+          showDialog(context: context, builder: (context) {
+            return  AlertDialog(title: const Text("Error"),
+              content: Text(state.msg),
+            );
+          },);
+        }
+
 
 
 
